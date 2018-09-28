@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Simple Blog</a>
+        <Link className="navbar-brand" to="/">Simple Blog</Link>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-item nav-link" href="#">Home</a>
-            <a className="nav-item nav-link" href="#">Blog</a>
-            <a className="nav-item nav-link" href="#">About</a>
+            <Link className="nav-item nav-link" to="/">Home</Link>
+            <Link className="nav-item nav-link" to="/blog">Blog</Link>
+            <Link className="nav-item nav-link" to="/about">About</Link>
           </div>
         </div>
       </nav>
