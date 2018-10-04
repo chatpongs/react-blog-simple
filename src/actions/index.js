@@ -1,7 +1,6 @@
 export const getPosts = () => {
-  console.log('getPosts');
   return {
     type: 'GET_POSTS',
-    payload: null,
+    payload: [{id: 1, title: 'Title1', content: 'Content1'}, {id: 2, title: 'Title2', content: 'Content2'}],
   }
 }
