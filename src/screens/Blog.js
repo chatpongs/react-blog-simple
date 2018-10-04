@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PostItem from '../components/PostItem';
 import PostForm from '../components/PostForm';
+import { connect } from 'react-redux';
 
 class Blog extends React.Component {
   state = {
@@ -12,7 +13,7 @@ class Blog extends React.Component {
   }
   async componentDidMount() {
     const posts = await axios.get('https://my-strapi-demo.herokuapp.com/post');
-    this.setState({posts: posts.data});
+    this.setState({ posts: posts.data });
   }
   render() {
     return (
@@ -23,7 +24,7 @@ class Blog extends React.Component {
           <hr />
           <div className="row">
             {
-              this.state.posts.map(post => <PostItem key={post.id} post={post} />)
+              this.props.posts.map(post => <PostItem key={post.id} post={post} />)
             }
           </div>
           <hr />
@@ -35,4 +36,8 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog;
+const mapStateToProps = state => {
+  return { posts: state.posts }
+}
+
+export default connect(mapStateToProps)(Blog);
