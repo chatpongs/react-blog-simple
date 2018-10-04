@@ -23,7 +23,7 @@ class Blog extends React.Component {
           <hr />
           <div className="row">
             {
-              this.state.posts.map(post => <PostItem post={post} />)
+              this.state.posts.map(post => <PostItem key={post.id} post={post} />)
             }
           </div>
           <hr />
