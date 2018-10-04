@@ -1,9 +1,12 @@
+import axios from 'axios';
+
 export const getPosts = () => {
   return (
-    dispatch => {
+    async (dispatch) => {
+      const posts = await axios.get('https://my-strapi-demo.herokuapp.com/post');
       dispatch({
         type: 'GET_POSTS',
-        payload: [{id: 1, title: 'Title1', content: 'Content1'}, {id: 2, title: 'Title2', content: 'Content2'}],
+        payload: posts.data,
       })
     }
   )
