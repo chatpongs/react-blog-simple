@@ -9,12 +9,7 @@ import PostForm from '../components/PostForm';
 import { getPosts } from '../actions';
 
 class Blog extends React.Component {
-  state = {
-    posts: []
-  }
   async componentDidMount() {
-    // const posts = await axios.get('https://my-strapi-demo.herokuapp.com/post');
-    // this.setState({ posts: posts.data });
     this.props.getPosts();
   }
   render() {
