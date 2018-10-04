@@ -11,3 +11,18 @@ export const getPosts = () => {
     }
   )
 }
+
+export const createPost = (title, content) => {
+  return (
+    async (dispatch) => {
+      const response = await axios.post('https://my-strapi-demo.herokuapp.com/post', {
+        title,
+        content
+      });
+      dispatch({
+        type: 'CREATE_POST',
+        payload: response.data
+      })
+    }
+  )
+}

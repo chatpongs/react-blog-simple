@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 class PostForm extends React.Component {
   state = {
@@ -12,12 +14,8 @@ class PostForm extends React.Component {
   }
   handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`${this.state.title} ${this.state.content}`);
-    const response = await axios.post('https://my-strapi-demo.herokuapp.com/post', {
-      title: this.state.title,
-      content: this.state.content
-    });
-    console.log(response);
+    const { title, content } = this.state;
+    this.props.createPost(title, content);
   }
   render() {
     return (
@@ -39,4 +37,4 @@ class PostForm extends React.Component {
   }
 }
 
-export default PostForm;
+export default connect(null, { createPost })(PostForm);
